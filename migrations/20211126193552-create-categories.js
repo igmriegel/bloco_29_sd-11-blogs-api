@@ -12,8 +12,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       }
-    },{
-      timestamps: false,
     });
   },
   down: async (queryInterface, Sequelize) => {

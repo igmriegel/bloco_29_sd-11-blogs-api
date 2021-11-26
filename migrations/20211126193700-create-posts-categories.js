@@ -20,8 +20,6 @@ module.exports = {
         onDelete: 'cascade',
         primaryKey: true,
       }
-    },{
-      timestamps: false,
     });
   },
   down: async (queryInterface, Sequelize) => {
