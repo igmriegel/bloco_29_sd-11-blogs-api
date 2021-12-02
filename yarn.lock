@@ -4915,7 +4915,7 @@
   "resolved" "https://registry.npmjs.org/seq-queue/-/seq-queue-0.0.5.tgz"
   "version" "0.0.5"
 
-"sequelize-cli@6.2.0":
+"sequelize-cli@^6.2.0":
   "integrity" "sha512-6WQ2x91hg30dUn66mXHnzvHATZ4pyI1GHSNbS/TNN/vRR4BLRSLijadeMgC8zqmKDsL0VqzVVopJWfJakuP++Q=="
   "resolved" "https://registry.npmjs.org/sequelize-cli/-/sequelize-cli-6.2.0.tgz"
   "version" "6.2.0"
