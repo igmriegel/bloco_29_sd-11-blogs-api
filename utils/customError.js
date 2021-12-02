@@ -1,7 +1,7 @@
 const customError = (msg = null, httpCode = null) => {
-  const erroDeValidacao = new Error('Validation error');
+  const erroDeValidacao = new Error('Internal Validation Error');
 
-  erroDeValidacao.typeOfError = 'Validation error';
+  erroDeValidacao.typeOfError = 'Internal Validation Error';
   erroDeValidacao.message = msg;
   erroDeValidacao.httpCode = httpCode;
 
