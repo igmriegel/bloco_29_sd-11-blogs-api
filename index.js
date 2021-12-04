@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 app.use('/user', controllers.userController);
-// app.use('/login', controllers);
+app.use('/login', controllers.loginController);
 // app.use('/categories', controllers);
 // app.use('/post', controllers);
 
