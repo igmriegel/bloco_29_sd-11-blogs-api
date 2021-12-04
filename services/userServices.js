@@ -11,10 +11,9 @@ const validateUserName = (name) => {
 };
 
 const validatePassword = (password) => {
+  if (password === '') throw customEror('"password" is not allowed to be empty', 400);
   if (!password) throw customEror('"password" is required', 400);
-  if (password.length < 6) {
-    throw customEror('"password" length must be 6 characters long', 400);
-  }
+  if (password.length < 6) throw customEror('"password" length must be 6 characters long', 400);
 
   return true;
 };
@@ -22,6 +21,7 @@ const validatePassword = (password) => {
 const validateEmail = (email) => {
   const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/i;
 
+  if (email === '') throw customEror('"email" is not allowed to be empty', 400);
   if (!email) throw customEror('"email" is required', 400);
   if (!regex.test(email)) throw customEror('"email" must be a valid email', 400);
 
@@ -44,4 +44,6 @@ const createUser = async (userData) => {
 
 module.exports = {
   createUser,
+  validateEmail,
+  validatePassword,
 };
