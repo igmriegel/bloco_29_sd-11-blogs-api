@@ -8,6 +8,9 @@ const app = express();
 app.use(express.json());
 
 app.use('/user', controllers.userController);
+// app.use('/login', controllers);
+// app.use('/categories', controllers);
+// app.use('/post', controllers);
 
 // não remova esse endpoint, e para o avaliador funcionar
 app.get('/', (request, response) => {
