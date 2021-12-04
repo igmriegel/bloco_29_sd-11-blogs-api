@@ -1,5 +1,6 @@
 const { User } = require('../models');
 const customEror = require('../utils/customError');
+const generateTokenJWT = require('../utils/generateTokenJWT');
 
 const validateUserName = (name) => {
   if (name.length < 8) {
@@ -35,9 +36,7 @@ const createUser = async (userData) => {
 
   if (validEmail && validName && validPass) {
     await User.create({ displayName, email, password, image });
-
-    // TODO: implement JWT token
-    const newToken = 'newUserSuccess ? toDoGerarToken : null';
+    const newToken = generateTokenJWT({ displayName, email });
 
     return newToken;
   }
