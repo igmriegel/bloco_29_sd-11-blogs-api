@@ -14,7 +14,7 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.get('/', authMiddleware, async (_req, res, next) => {
+router.get('/', authMiddleware, async (req, res, next) => {
   try {
     const users = await User.findAll();
 
