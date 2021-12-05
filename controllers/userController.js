@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const { userServices } = require('../services');
 const { User } = require('../models');
+
 const authMiddleware = require('../middlewares/authMiddleware');
+const customEror = require('../utils/customError');
 
 router.post('/', async (req, res, next) => {
   try {
@@ -19,6 +21,21 @@ router.get('/', authMiddleware, async (req, res, next) => {
     const users = await User.findAll();
 
     return res.status(200).json(users);
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.get('/:id', authMiddleware, async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      throw customEror('User does not exist', 404);
+    }
+
+    return res.status(200).json(user);
   } catch (e) {
     next(e);
   }
