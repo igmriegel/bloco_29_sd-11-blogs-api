@@ -9,12 +9,12 @@ app.use(express.json());
 
 app.use('/user', controllers.userController);
 app.use('/login', controllers.loginController);
-// app.use('/categories', controllers);
+app.use('/categories', controllers.categoryController);
 // app.use('/post', controllers);
 
 // não remova esse endpoint, e para o avaliador funcionar
-app.get('/', (request, response) => {
-  response.send();
+app.get('/', (req, res) => {
+  res.send();
 });
 
 app.use(errorMiddleware);
