@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { postServices } = require('../services');
-const { BlogPost, User } = require('../models');
+const { BlogPost } = require('../models');
 
 const authMiddleware = require('../middlewares/authMiddleware');
 // const customError = require('../utils/customError');
