@@ -47,7 +47,6 @@ const createPost = async (postData) => {
 
   if (validTitle && validPostContent && validCatIds) {
     const timeStamp = generateTimeStamp();
-    console.log(timeStamp);
     const newPost = await BlogPost.create({
       title,
       content,
