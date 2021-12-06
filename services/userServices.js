@@ -35,8 +35,8 @@ const createUser = async (userData) => {
   const validPass = validatePassword(password);
 
   if (validEmail && validName && validPass) {
-    await User.create({ displayName, email, password, image });
-    const newToken = generateTokenJWT({ displayName, email });
+    const { id } = await User.create({ displayName, email, password, image });
+    const newToken = generateTokenJWT({ id, displayName, email });
 
     return newToken;
   }
