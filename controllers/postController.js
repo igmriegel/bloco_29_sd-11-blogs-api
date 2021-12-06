@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const { postServices } = require('../services');
-// const { BlogPost } = require('../models');
+const { BlogPost, User } = require('../models');
 
 const authMiddleware = require('../middlewares/authMiddleware');
-// const customEror = require('../utils/customError');
+// const customError = require('../utils/customError');
 
 router.post('/', authMiddleware, async (req, res, next) => {
   try {
@@ -15,6 +15,18 @@ router.post('/', authMiddleware, async (req, res, next) => {
     delete newPost.updated;
 
     return res.status(201).json(newPost);
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.get('/', authMiddleware, async (_req, res, next) => {
+  try {
+    const allPosts = await BlogPost.findAll({
+      include: [{ all: true }],
+    });
+
+    return res.status(200).json(allPosts);
   } catch (e) {
     next(e);
   }
