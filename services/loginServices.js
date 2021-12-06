@@ -25,7 +25,6 @@ const logUserIn = async (loginData) => {
 
   if (validEmail && validPass && validLogin) {
     const [{ dataValues: { id, displayName, email } }] = userData;
-    console.log({ id, displayName, email });
     const newToken = generateTokenJWT({ id, displayName, email });
 
     return newToken;
