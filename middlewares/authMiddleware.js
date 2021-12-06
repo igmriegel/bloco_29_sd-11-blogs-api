@@ -10,9 +10,10 @@ const authMiddleware = (req, res, next) => {
       return res.status(401).json({ message: 'Token not found' });
     }
 
-    const { data: { email, displayName } } = jwt.verify(authToken, secret);
+    const { data: { id, email, displayName } } = jwt.verify(authToken, secret);
   
     req.authInfo = {
+      id,
       email,
       displayName,
       authorized: true,
