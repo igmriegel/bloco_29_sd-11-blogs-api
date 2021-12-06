@@ -18,12 +18,14 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Users',
           key: 'id',
         },
         onDelete: 'cascade',
-        primaryKey: true,
+        onUpdate: 'cascade',
+        foreignKey: true,
       },
       published: {
         allowNull: false,
