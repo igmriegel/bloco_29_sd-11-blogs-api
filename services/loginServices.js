@@ -15,18 +15,18 @@ const validateLogin = async (loginData) => {
     throw customEror('Invalid fields', 400);
   }
 
-  return userData;
+  return [true, userData];
 };
 
 const logUserIn = async (loginData) => {
-  const { email, password } = loginData;
-  const validEmail = validateEmail(email);
-  const validPass = validatePassword(password);
-  const validLogin = await validateLogin({ email, password });
+  const validEmail = validateEmail(loginData.email);
+  const validPass = validatePassword(loginData.password);
+  const [validLogin, userData] = await validateLogin(loginData);
 
   if (validEmail && validPass && validLogin) {
-    const { displayName } = validLogin;
-    const newToken = generateTokenJWT({ displayName, email });
+    const [{ dataValues: { id, displayName, email } }] = userData;
+    console.log({ id, displayName, email });
+    const newToken = generateTokenJWT({ id, displayName, email });
 
     return newToken;
   }
